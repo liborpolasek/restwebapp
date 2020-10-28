@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,300,600" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+  <title>Sentences</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Sentences</h1>
+    	  <span class="one column">ID</span>
+          <span class="two columns">Sentence</span>
+          <span class="three columns">Number of Views</span>
+          <span class="two columns">Yoda Talk</span>
+    <div class="row" th:each="sentence : ${sentences}">
+      <div class="nine columns">
+      	  <span th:text="${sentence.id}" class="two columns"></span>
+          <span th:text="${sentence.text}" class="four columns"></span>
+          <span th:text="${sentence.numberOfViews}" class="two columns"></span>
+          <span th:text="${sentence.yodaTalk}" class="four columns"></span>
+      </div>
+
+    </div>
+    <hr />
+	<form method="post" th:action="@{/s}" th:object="${newSentence}">
+      <div class="row">
+        <div class="four columns">
+          <button type="submit" class="button-primary u-full-width">Generate new Sentence</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
